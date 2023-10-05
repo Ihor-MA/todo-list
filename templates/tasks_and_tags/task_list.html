@@ -12,17 +12,22 @@
 
     {% for task in task_list %}
         <hr>
-        <h4>
+        <p>
           <strong>{{ task.content }}</strong>
           {% if task.is_task_done %}
-            Done
+            <span class="text-success">Done</span>
             <a href="" class="btn btn-success link-to-page">Complete</a>
           {% else %}
-            Not Done
+            <span class="text-danger">Not Done</span>
             <a href="" class="btn btn-secondary link-to-page">Undo</a>
           {% endif %}
-        </h4>
-        <p>Created: {{ task.task_created }}</p>
+        </p>
+        <p>
+          Created: {{ task.task_created }}
+          {% if task.deadline %}
+            <span style="color: brown;">Deadline: {{ task.deadline }}</span>
+          {% endif %}
+        </p>
         <p class="grey-text">
           Tags:
           {% for tag in task.tags.all %}

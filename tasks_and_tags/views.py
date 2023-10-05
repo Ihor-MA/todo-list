@@ -11,6 +11,7 @@ class TagListView(generic.ListView):
 
 class TaskListView(generic.ListView):
     model = Task
+    queryset = Task.objects.order_by("is_task_done", "deadline")
 
 
 class TaskCreateView(generic.CreateView):
